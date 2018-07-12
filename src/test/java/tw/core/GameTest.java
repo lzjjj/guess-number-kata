@@ -36,6 +36,116 @@ public class GameTest {
         assertThat(guess.getResult(), is("4A0B"));
 
     }
+    @Test
+    public void should_get_no_number_status_when_guess_input_is_no_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("7 8 9 0"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("8 9 7 5"));
 
+        //when
+        //then
+        assertThat(guess1.getResult(), is("0A0B"));
+        assertThat(guess2.getResult(), is("0A0B"));
+    }
+    @Test
+    public void should_get_the_one_number_status_when_guess_input_is_one_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("5 7 8 1"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("5 1 8 6"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("0A1B"));
+        assertThat(guess2.getResult(), is("0A1B"));
+    }
+
+    @Test
+    public void should_get_the_two_number_status_when_guess_input_is_two_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("5 7 2 1"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("5 7 1 2"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("0A2B"));
+        assertThat(guess2.getResult(), is("0A2B"));
+
+    }
+    @Test
+    public void should_get_the_three_number_status_when_guess_input_is_three_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("5 3 2 1"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("3 5 2 1"));
+        //when
+        //then
+        assertThat(guess1.getResult(), is("0A3B"));
+        assertThat(guess2.getResult(), is("0A3B"));
+    }
+    @Test
+    public void should_get_the_four_number_status_when_guess_input_is_four_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("4 3 2 1"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("3 4 2 1"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("0A4B"));
+        assertThat(guess2.getResult(), is("0A4B"));
+    }
+    @Test
+    public void should_get_one_position_status_when_guess_input_is_one_position_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 8 9 6"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("5 2 8 9"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("1A0B"));
+        assertThat(guess2.getResult(), is("1A0B"));
+    }
+    @Test
+    public void should_get_two_position_status_when_guess_input_is_two_position_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 2 9 6"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("5 2 3 9"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("2A0B"));
+        assertThat(guess2.getResult(), is("2A0B"));
+    }
+    @Test
+    public void should_get_three_position_status_when_guess_input_is_three_position_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 2 3 6"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("5 2 3 4"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("3A0B"));
+        assertThat(guess2.getResult(), is("3A0B"));
+    }
+    @Test
+    public void should_get_one_position_three_number_status_when_guess_input_is_one_position_three_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 4 2 3"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("4 2 1 3"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("1A3B"));
+        assertThat(guess2.getResult(), is("1A3B"));
+    }
+    @Test
+    public void should_get_two_position_two_number_status_when_guess_input_is_two_position_two_number_correct() throws Exception {
+        GuessResult guess1 = game.guess(Answer.createAnswer("1 2 4 3"));
+        GuessResult guess2 = game.guess(Answer.createAnswer("1 4 3 2"));
+
+        //when
+        //then
+        assertThat(guess1.getResult(), is("2A2B"));
+        assertThat(guess2.getResult(), is("2A2B"));
+    }
+//    @Test
+////    public void should_get_wrong_status_when_guess_input_is_one_number() throws Exception {
+////        GuessResult guess1 = game.guess(Answer.createAnswer("1"));
+////        GuessResult guess2 = game.guess(Answer.createAnswer("2"));
+////
+////        //when
+////        //then
+////        assertThat(guess1.getResult(), is("Wrong Input，Input again"));
+////        assertThat(guess2.getResult(), is("Wrong Input，Input again"));
+////    }
 
 }
